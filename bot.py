@@ -44,6 +44,7 @@ async def on_ready():
     print('Gone')
 	#await bot.change_presence(activity=discord.Activity(name='mc.greenshine.space', type=discord.ActivityType.watching))
 
+#Принять
 @bot.command( aliases = [ "Принять", "принять", "Принят", "принят", ] )
 @commands.has_permissions ( administrator = True )
 async def accept( ctx, member : discord.Member ):
@@ -56,6 +57,10 @@ async def accept( ctx, member : discord.Member ):
             await ctx.send(embed = discord.Embed(description = f'{member.mention} ({member})**, Был принят модератором **{ctx.author.mention} ({ctx.author})**!** '))
         else:
         	await ctx.send(embed = discord.Embed(description = f'{ctx.author}, у данного пользователя нет роли {awaiting.mention}'))
-
+#Пинг
+@bot.command(aliases=["задержка"])
+async def ping(ctx):
+    embed = discord.Embed(description=f"{Bot.ws.latency * 1000:.0f} мс", color=0x1E90FF)
+    await ctx.send(embed=embed)
 
 bot.run(fucking_token)
